@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sth_learnt," />
 
 
 
@@ -94,14 +94,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="TTags">
-<meta property="og:url" content="http://zwlori.github.io/tags/index.html">
+<meta name="description" content="哇，有多久没有更新了。。。想写个有趣的主题，把日常工作遇到的一些问题延伸带来的知识了解记录下来。今日份：Service里有一个cache loading的环节，在PST midnight的时候会重新refresh cache。因为cache里需要存多种数据，为了data consistency，会把所有的全部load到一个holder里面，等全部的data update执行完毕后再把这个holde">
+<meta name="keywords" content="sth_learnt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Bean Scopes">
+<meta property="og:url" content="http://zwlori.github.io/2019/03/07/today/index.html">
 <meta property="og:site_name" content="TingkingLu">
+<meta property="og:description" content="哇，有多久没有更新了。。。想写个有趣的主题，把日常工作遇到的一些问题延伸带来的知识了解记录下来。今日份：Service里有一个cache loading的环节，在PST midnight的时候会重新refresh cache。因为cache里需要存多种数据，为了data consistency，会把所有的全部load到一个holder里面，等全部的data update执行完毕后再把这个holde">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-22T02:20:36.000Z">
+<meta property="og:updated_time" content="2019-03-12T13:02:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TTags">
+<meta name="twitter:title" content="Spring Bean Scopes">
+<meta name="twitter:description" content="哇，有多久没有更新了。。。想写个有趣的主题，把日常工作遇到的一些问题延伸带来的知识了解记录下来。今日份：Service里有一个cache loading的环节，在PST midnight的时候会重新refresh cache。因为cache里需要存多种数据，为了data consistency，会把所有的全部load到一个holder里面，等全部的data update执行完毕后再把这个holde">
 
 
 
@@ -130,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://zwlori.github.io/tags/"/>
+  <link rel="canonical" href="http://zwlori.github.io/2019/03/07/today/"/>
 
 
 
 
 
-  <title>TTags | TingkingLu</title>
+  <title>Spring Bean Scopes | TingkingLu</title>
   
 
 
@@ -257,40 +261,155 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zwlori.github.io/2019/03/07/today/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZWLori">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/15152854.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TingkingLu">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">TTags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                3 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/life-explorer/" style="font-size: 30px; color: #111">life_explorer</a> <a href="/tags/setups/" style="font-size: 12px; color: #ccc">setups</a> <a href="/tags/sth-learnt/" style="font-size: 12px; color: #ccc">sth_learnt</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Spring Bean Scopes</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-07T21:50:06+08:00">
+                2019-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>哇，有多久没有更新了。。。<br>想写个有趣的主题，把日常工作遇到的一些问题延伸带来的知识了解记录下来。<br>今日份：<br>Service里有一个cache loading的环节，在PST midnight的时候会重新refresh cache。因为cache里需要存多种数据，为了data consistency，会把所有的全部load到一个holder里面，等全部的data update执行完毕后再把这个holder release掉。<br>整个架构用的springboot。问题出现在scope上面。<br>Spring提供6种常见的scope，其中后四种只针对于web-aware的应用：</p>
+<ul>
+<li><p>singleton<br>  这个顾名思义了，一个singleton的bean是指在container里面，只会有一个instance被创建出来。每次获取的instance都是同一个。如果一处改动了这个instance，其余的地方也会受到相应的变动。<br>  <strong><em>注： 如果scope没有manual define，那么默认的即为singleton</em></strong></p>
+</li>
+<li><p>prototype<br>  这个和singleton相反，prototype的scope是指每次request获取都会拿到一个不一样的instance。</p>
+</li>
+<li><p>request<br>  对于网络应用来说，这个scope是指给每一个http request都新创建一个新的bean。</p>
+</li>
+<li><p>session, application, websocket (好。。这几个没咋用过。。。skip掉。。)</p>
+</li>
+</ul>
+<p>问题就出现在上面提到的注，我们其中的一个class忘记indicate prototype的scope，导致每次update cache其实都是在modify同一个map。虽说目前很幸运的并没有遇到什么问题。但是这相当于是新旧cache都在被用，data inconsistency。还好及时发现改掉了。感觉好多陷阱。。不小心忘记什么就GG了。。</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sth-learnt/" rel="tag"># sth_learnt</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/06/Coffee-Lover-2/" rel="next" title="Coffee Lover 2">
+                <i class="fa fa-chevron-left"></i> Coffee Lover 2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -514,10 +633,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

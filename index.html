@@ -270,6 +270,270 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zwlori.github.io/2019/03/07/today/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZWLori">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/15152854.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TingkingLu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/07/today/" itemprop="url">Spring Bean Scopes</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-07T21:50:06+08:00">
+                2019-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>哇，有多久没有更新了。。。<br>想写个有趣的主题，把日常工作遇到的一些问题延伸带来的知识了解记录下来。<br>今日份：<br>Service里有一个cache loading的环节，在PST midnight的时候会重新refresh cache。因为cache里需要存多种数据，为了data consistency，会把所有的全部load到一个holder里面，等全部的data update执行完毕后再把这个holder release掉。<br>整个架构用的springboot。问题出现在scope上面。<br>Spring提供6种常见的scope，其中后四种只针对于web-aware的应用：</p>
+<ul>
+<li><p>singleton<br>  这个顾名思义了，一个singleton的bean是指在container里面，只会有一个instance被创建出来。每次获取的instance都是同一个。如果一处改动了这个instance，其余的地方也会受到相应的变动。<br>  <strong><em>注： 如果scope没有manual define，那么默认的即为singleton</em></strong></p>
+</li>
+<li><p>prototype<br>  这个和singleton相反，prototype的scope是指每次request获取都会拿到一个不一样的instance。</p>
+</li>
+<li><p>request<br>  对于网络应用来说，这个scope是指给每一个http request都新创建一个新的bean。</p>
+</li>
+<li><p>session, application, websocket (好。。这几个没咋用过。。。skip掉。。)</p>
+</li>
+</ul>
+<p>问题就出现在上面提到的注，我们其中的一个class忘记indicate prototype的scope，导致每次update cache其实都是在modify同一个map。虽说目前很幸运的并没有遇到什么问题。但是这相当于是新旧cache都在被用，data inconsistency。还好及时发现改掉了。感觉好多陷阱。。不小心忘记什么就GG了。。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://zwlori.github.io/2018/02/06/Coffee-Lover-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZWLori">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/15152854.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TingkingLu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/06/Coffee-Lover-2/" itemprop="url">Coffee Lover 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-06T14:50:07+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上篇聊了聊自己和咖啡的恩怨情仇。这篇来说说自己学到的一些咖啡小知识。</p>
+<hr>
+<p>几个常见的以及自己喜爱的咖啡。</p>
+<ul>
+<li>Espresso 意式浓缩咖啡 -<br>  将极热（非沸腾）的水加压，约9⃣️个大气压，后冲煮研磨过的咖啡粉而制成。粉和水比例比较大，咖啡的苦涩味更重一些，故又叫浓缩咖啡。（没尝过）</li>
+<li>Americano 美式咖啡 -<br>  简单说就是 2/5 Espresso + 3/5 水。没有掩盖咖啡本身味道的同时，又更清新一些，易让人接受。（凭啥比Espresso贵那么多）</li>
+<li>Latte 拿铁 -<br>  十分milky的咖啡，大约 1/6 Espresso + 4/6 蒸汽牛奶 + 1/6 奶泡。将高温蒸汽打入牛奶，上层会形成奶泡，用勺子挡住奶泡，先将热蒸汽牛奶倒入杯中，再把丰富的奶泡添上去即可。据说所有奶质咖啡都要在Espresso做好的十秒之内就要倒入牛奶，否则会“shot 过期”。（家常饮品）</li>
+<li>Cappuccino 卡布奇诺 -<br>  Foam更多一些的咖啡，1/3 Espresso + 1/3 蒸汽牛奶 + 1/3 奶泡。比起拿铁，口感更棉细一些。（其实如果不是两杯同时放我面前让我品尝，我是不会发现太多口感上的区分的 = =）这个名字的由来也是超级有意思。意大利人发现牛奶和咖啡柔软结合后形成的奶盖色泽，很像教会僧侣穿戴的棕色连帽长袍，就索性起了个和长袍一样的名字。（真性情）</li>
+<li>Motca 摩卡 -<br>  巧克力注入的咖啡， 2/5 Espresso + 2/5 热巧克力 + 1/5 蒸汽牛奶。摩卡原本是指一种具有巧克力香气的咖啡豆，主要产于一个名叫摩卡的沿海小镇，所以就起名为摩卡豆。现今就直接在咖啡的基础上融入巧克力制造类似的口味了。听说摩卡里添加些酒精会别有一番风味。（想尝 0.0）</li>
+<li>Macchiato 玛奇朵 -<br>  再Espresso的基础上加上两大勺绵密细软的奶泡即为一杯玛奇朵。这个名字也很有趣，意大利文里，Macchiato意为“烙印，印记”，好浪漫的词。约会时来一杯焦糖玛奇朵可就真的是“甜蜜的印记”了。（谁来约我来一杯）</li>
+<li>Flat White 不知道中文是啥 -<br>  Espresso + Microfoam。对于拿铁来说，一般奶泡厚度会大于1cm，而Flat White一般不会超过5mm。卡布奇诺的粗奶泡一般是漂浮在牛奶上方的，而Flat White会更加细腻，质地很不同，并且牛奶和奶泡融合十分好，加上咖啡含量稍高，所以味道更加醇厚，口感更加顺滑。（西番这个）</li>
+</ul>
+<hr>
+<p>最后来谈谈手冲咖啡。大致需要的有滤杯，底壶，滤纸和手冲壶这四样。整体的制作方法很简单，基本是按照1：15的粉水比，水温以90-93度为佳，先洗滤纸、再布粉、最后冲泡、滴滤、出杯。<br>制作黑咖啡还可以用法压壶等其他器具。<br>因为自己使用过法压壶，就来大致讲一下基本流程。先温壶，按自己喜好放入咖啡粉，然后加入一半约90度的烧水，搅拌少许，让咖啡油脂漂浮上来，再加入另一半烧水，盖盖子静置3-5分钟，缓慢的将滤器垂直向下压，即将咖啡渣压至壶底，最后倒入温好的咖啡杯中即可。<br>相比起浓郁醇厚的意式咖啡，手冲咖啡的高容错率，能够更好地体现咖啡豆本身的味道，并且没有其他添加物的影响，我们可以更直观的感受到咖啡豆本身特有的产地风味，比如随处可见的耶加雪菲，出来的手冲耶加，基本会完美呈现它本身的花香特质以及柑橘类风味！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://zwlori.github.io/2018/02/05/Coffee-Lover/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -698,7 +962,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -711,7 +975,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -777,7 +1041,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
